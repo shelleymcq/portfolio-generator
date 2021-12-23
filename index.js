@@ -33,6 +33,11 @@ const questions = [
     },
     {
       type: 'input',
+      name: 'devHeadshot',
+      message: 'Enter the url for your headshot.'
+    },
+    {
+      type: 'input',
       name: 'github',
       message: 'Enter your github url',
       validate(answer) {
