@@ -1,7 +1,10 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const path = require('path');
+const generateHTML = require('./utils/generateHTML');
 
-inquirer.prompt([
+
+const questions = [
     {
       type: 'input',
       name: 'firstName',
@@ -31,12 +34,24 @@ inquirer.prompt([
     {
       type: 'input',
       name: 'github',
-      message: 'Enter your github url'
+      message: 'Enter your github url',
+      validate(answer) {
+        if(answer.includes(' ')) {
+          return "Please provide a valid url."
+        }
+        return true
+      }
     },
     {
       type: 'input',
       name: 'linkedIn',
-      message: 'Enter your LinkedIn url.'
+      message: 'Enter your LinkedIn url.',
+      validate(answer) {
+        if(answer.includes(' ')) {
+          return "Please provide a valid url."
+        }
+        return true
+      }
     },
     {
       type: 'input',
@@ -78,7 +93,18 @@ inquirer.prompt([
       }
     }
 
-  ])
-  .then((response) => 
-    console.log(response)
-  );
+  ]
+
+  function writeToFile(fileName, data) {
+    return fs.writeFileSync(path.join(process.cwd(), fileName), data);
+  }
+  
+  // Function to initialize app
+  function init() {
+    inquirer.prompt(questions).then((inquirerResponses) => {
+      console.log('Generating HTML...');
+      writeToFile('index.html', generateHTML({ ...inquirerResponses }));
+    });
+  }
+  
+  init();
