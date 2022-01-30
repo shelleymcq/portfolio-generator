@@ -34,12 +34,12 @@ const questions = [
     {
       type: 'input',
       name: 'devHeadshot',
-      message: 'Enter the url for your headshot.'
+      message: 'Enter the file name of your headshot (ex: headshot.png).'
     },
     {
       type: 'input',
       name: 'github',
-      message: 'Enter your github url',
+      message: 'Enter your github url.',
       validate(answer) {
         if(answer.includes(' ')) {
           return "Please provide a valid url."
@@ -62,10 +62,10 @@ const questions = [
       type: 'input',
       name: 'email',
       message: 'Enter your email address.',
-      // could improve by used  a regex to validate valid email https://pakstech.com/blog/inquirer-js/
       validate(answer) {
-        if(!answer) {
-          return "Please provide an email address."
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        if (!emailRegex.test(answer)) {
+          return "Please provide a valid email address."
         }
         return true
       }
@@ -79,7 +79,7 @@ const questions = [
     {
       type: 'input',
       name: 'projectImage',
-      message: 'Enter the url for a thumbnail image of the project.'
+      message: 'Enter the file name of your project thumbnail (ex: project.jpg).'
     },
     {
       type: 'input',

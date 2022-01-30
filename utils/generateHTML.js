@@ -26,7 +26,7 @@ function generateHTML(data) {
       <div class="row project">
         <div class="col-md-8 offset-md-2 p-2">
           <div class="card" style="flex-direction:row; align-items:center">
-            <img src="${data.projectImage}" class="card-img-top" style="width:30%" alt="thumbnail of app">
+            <img src="./assets/${data.projectImage}" class="card-img-top" style="width:30%; padding-left:1em" alt="thumbnail of app">
             <div class="card-body">
               <h5 class="card-title">${data.projectTitle}</h5>
               <p class="card-text">${data.projectInfo}</p>
@@ -51,11 +51,16 @@ function generateHTML(data) {
           <h3 class="display-6">
             Hi, I'm ${data.firstName}
           </h3>
-          <img src="${data.devHeadshot}" style="width:50%" alt="developer's photo">
+          <img src="./assets/${data.devHeadshot}" style="width:50%" alt="developer's photo">
           <p>${data.city}</p>
         </div>
       </div>
   </div>
+  <footer>
+  <div style="position: fixed; width: 100%; text-align: center; background-color: rgb(105, 126, 146)">
+    Made with &#128153 by ${data.firstName + " " + data.lastName}
+  </div>
+</footer>
 
 </body>
 </html>
