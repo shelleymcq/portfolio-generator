@@ -20,47 +20,47 @@ function generateHTML(data) {
         </div>
       </div>
     </nav>
-  
-    <div class="container">
 
-      <div class="row project">
-        <div class="col-md-8 offset-md-2 p-2">
-          <div class="card" style="flex-direction:row; align-items:center">
-            <img src="./assets/${data.projectImage}" class="card-img-top" style="width:30%; padding-left:1em" alt="thumbnail of app">
-            <div class="card-body">
-              <h5 class="card-title">${data.projectTitle}</h5>
-              <p class="card-text">${data.projectInfo}</p>
-              <a href="${data.projectLink}" class="btn btn-primary">See the App</a>
+    <main>
+      <section class="container">
+        <div class="row project">
+          <div class="col-md-8 offset-md-2 p-2">
+            <div class="card" style="flex-direction:row; align-items:center">
+              <img src="./assets/${data.projectImage}" class="card-img-top" style="width:30%; padding-left:1em" alt="thumbnail of app">
+              <div class="card-body">
+                <p class="h4 card-title">${data.projectTitle}</p>
+                <p class="card-text text-muted">${data.projectInfo}</p>
+                <a href="${data.projectLink}" class="btn btn-primary">See the App</a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-    </div>
-
-
-    <div class="container-fluid" style="background-color:rgb(161, 185, 209);">
-      <div class="row">
-        <div class="col-sm-8">
-          <p id="about">${data.bio}</p>
-          <p><a href="${data.github}">${data.github}</a></p>
-          <p><a href="${data.linkedIn}">${data.linkedIn}</a></p>
-          <p><a id="email" href = "mailto:${data.email}">${data.email}</a></p>
+      <section class="container-fluid" style="background-color:rgb(161, 185, 209);">
+        <div class="row">
+          <div class="col-sm-8">
+            <p id="about">${data.bio}</p>
+            <p><a href="${data.github}">${data.github}</a></p>
+            <p><a href="${data.linkedIn}">${data.linkedIn}</a></p>
+            <p><a id="email" href = "mailto:${data.email}">${data.email}</a></p>
+          </div>
+          <div class="col-sm-4">
+            <h1 class="display-6">
+              Hi, I'm ${data.firstName}
+            </h1>
+            <img src="./assets/${data.devHeadshot}" style="width:50%" alt="developer's photo">
+            <p>${data.city}</p>
+          </div>
         </div>
-        <div class="col-sm-4">
-          <h3 class="display-6">
-            Hi, I'm ${data.firstName}
-          </h3>
-          <img src="./assets/${data.devHeadshot}" style="width:50%" alt="developer's photo">
-          <p>${data.city}</p>
-        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div style="position: fixed; width: 100%; text-align: center; background-color: rgb(105, 126, 146)">
+        Made with &#128153 by ${data.firstName + " " + data.lastName}
       </div>
-  </div>
-  <footer>
-  <div style="position: fixed; width: 100%; text-align: center; background-color: rgb(105, 126, 146)">
-    Made with &#128153 by ${data.firstName + " " + data.lastName}
-  </div>
-</footer>
+    </footer>
 
 </body>
 </html>

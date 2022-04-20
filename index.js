@@ -1,10 +1,17 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const path = require('path');
+// ASCII art
+const figlet = require('figlet');
+
 const generateHTML = require('./utils/generateHTML');
 
-
 const questions = [
+    {
+      type: 'confirm',
+      name: 'imagesAdded',
+      message: 'Have you added a headshot and project image to the assets folder?'
+    },
     {
       type: 'input',
       name: 'firstName',
@@ -106,6 +113,7 @@ const questions = [
   
   // Function to initialize app
   function init() {
+    console.log(figlet.textSync('welcome', {horizontalLayout: 'full'}));
     inquirer.prompt(questions).then((inquirerResponses) => {
       console.log('Generating HTML...');
       writeToFile('index.html', generateHTML({ ...inquirerResponses }));
